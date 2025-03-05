@@ -6,6 +6,20 @@ const chatSend = document.getElementById('chat-send');
 
 let messages = [];
 
+// Load messages from LocalStorage
+if (localStorage.getItem('messages')) {
+  messages = JSON.parse(localStorage.getItem('messages'));
+  messages.forEach((message) => {
+    chatLog.innerHTML += `
+      <li>
+        <span>${message.username}:</span>
+        <span>${message.message}</span>
+        ${message.file ? `<img src="${URL.createObjectURL(message.file)}" />` : ''}
+      </li>
+    `;
+  });
+}
+
 chatSend.addEventListener('click', () => {
   const username = usernameInput.value.trim();
   const message = chatInput.value.trim();
@@ -22,12 +36,15 @@ chatSend.addEventListener('click', () => {
     chatLog.innerHTML += `
       <li>
         <span>${messageObject.username}:</span>
-    <span>${messageObject.message}</span>
-    ${messageObject.file ? `<img src="${URL.createObjectURL(messageObject.file)}" />` : ''}
-  </li>
-`;
+        <span>${messageObject.message}</span>
+        ${messageObject.file ? `<img src="${URL.createObjectURL(messageObject.file)}" />` : ''}
+      </li>
+    `;
 
-chatInput.value = '';
-fileInput.value = '';
-}
+    // Save messages to LocalStorage
+    localStorage.setItem('messages', JSON.stringify(messages));
+
+    chatInput.value = '';
+    fileInput.value = '';
+  }
 });
