@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Room Chat Moon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h2>Room Chat</h2>
+    </div>
+    <div class="chat-body">
+      <ul id="chat-log">
+        <!-- Pesan akan ditampilkan di sini -->
+      </ul>
+    </div>
+    <div class="chat-footer">
+      <div class="username-input">
+        <input type="text" id="username" placeholder="Username">
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chat-input" placeholder="Tulis pesan...">
+        <label for="file-input">
+          <i class="fa fa-paperclip"></i>
+        </label>
+        <input type="file" id="file-input" accept="image/*">
+      </div>
+      <div class="chat-send">
+        <button id="chat-send">Kirim</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
