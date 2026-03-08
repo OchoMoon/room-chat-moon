@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register MoonChat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Daftar MoonChat</h2>
+
+<button onclick="reg()">Buat Akun</button>
+
+<div id="number"></div>
+
+<script>
+
+async function reg(){
+
+ const res = await fetch("/register",{
+  method:"POST"
+ })
+
+ const data = await res.json()
+
+ localStorage.setItem("moon_user",data.id)
+
+ document.getElementById("number").innerHTML =
+ "Nomor kamu: "+data.number
+
+ setTimeout(()=>{
+ location="chat.html"
+ },2000)
+
+}
+
+</script>
+
+</body>
+</html>
